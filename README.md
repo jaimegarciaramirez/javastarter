@@ -1,2 +1,2 @@
-# gsa_ads
-GSA Agile Delivery Services project
+# Java Starter Project
+This will create a Gradle build driven Java project to quickly create a new Spring powered Java Web Application.
