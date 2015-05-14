@@ -1,0 +1,60 @@
+/*
+ * The following is included to use Spring Boot
+ */
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+    }
+}
+
+/* Packaged as a Spring Boot or WAR application */
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+/* Project Information */
+def projectName = 'Bridgephase MVC Starter'
+def deployableName = 'BridgePhaseMVC'
+def projectVersion = '1.0'
+
+/* This requires Java 7 */
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+/* JAR Manifest Definition */
+jar {
+  baseName = deployableName
+  version = projectVersion
+  manifest {
+    attributes 'Implementation-Title': projectName,
+                'Implementation-Version': projectVersion
+  }
+}
+
+repositories {
+  mavenCentral()
+}
+
+/* List of dependencies */
+dependencies {
+  // compile dependencies
+  compile("org.springframework.boot:spring-boot-starter-web")   // spring boot
+
+  testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+
+/*
+ * createSource task
+ *
+ * This task is useful when first cloning this project. It creates
+ * the default directories needed for the web application
+ */
+task 'createSource' << {
+  sourceSets*.java.srcDirs*.each { it.mkdirs() }
+  sourceSets*.resources.srcDirs*.each { it.mkdirs() }
+  new File(webAppDirName + '/WEB-INF').mkdirs()
+}
