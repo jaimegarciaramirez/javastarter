@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Jaime Garcia
  */
 @Controller
-public class HelloWorld {
+public class HelloWorldController {
 
 	/**
 	 * This request mapping method will render a response of "Hello World".
@@ -31,7 +31,7 @@ public class HelloWorld {
 	 * 
 	 * @return the view name of "hello"
 	 */
-	@RequestMapping(value = "/hello")
+	@RequestMapping(value = "/")
 	public String hello() {
 		return "hello";
 	}
