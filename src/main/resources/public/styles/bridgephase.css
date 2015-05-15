@@ -1,0 +1,21 @@
+.bp .pure-menu {
+	background: #253849;
+	color: #fff;
+}
+
+.bp .home-menu {
+	padding: 0.5em;
+}
+
+.bp .pure-menu-heading {
+	color: #ccc;
+	text-transform: none;
+}
+
+.bp .pure-menu-link {
+	color: #ddd;
+}
+
+.bp .pure-menu-link:hover, .bp .pure-menu-link:focus {
+	background:#3F5263;
+}
