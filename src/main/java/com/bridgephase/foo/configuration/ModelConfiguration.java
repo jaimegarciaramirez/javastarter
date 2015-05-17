@@ -23,18 +23,19 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 public class ModelConfiguration {
 	@Bean
+	public DataSource dataSource() {
+		final EmbeddedDatabaseBuilder embeddedDatabaseBuilder = new EmbeddedDatabaseBuilder();
+		embeddedDatabaseBuilder.setType(EmbeddedDatabaseType.H2);
+		return embeddedDatabaseBuilder.build();
+	}
+
+
+	@Bean
 	public LocalSessionFactoryBean getSessionFactory() {
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
 		sessionFactory.setPackagesToScan(new String[] { "com.bridgephase.foo.model.jpa" });
 		return sessionFactory;
-	}
-
-	@Bean
-	public DataSource dataSource() {
-		final EmbeddedDatabaseBuilder embeddedDatabaseBuilder = new EmbeddedDatabaseBuilder();
-		embeddedDatabaseBuilder.setType(EmbeddedDatabaseType.H2);
-		return embeddedDatabaseBuilder.build();
 	}
 
 	@Bean
