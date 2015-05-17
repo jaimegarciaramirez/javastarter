@@ -1,8 +1,12 @@
 package com.bridgephase.foo.view.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.bridgephase.foo.model.jpa.Person;
+import com.bridgephase.foo.model.repository.PersonRepository;
 
 /**
  * This is a sample controller definition which shows both a <code>ResponseBody</code> response as well as a view
@@ -13,6 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloWorldController {
 
+	@Autowired
+	private PersonRepository personRepository;
+	
 	/**
 	 * This request mapping method will render a response of "Hello World".
 	 * 
@@ -21,7 +28,9 @@ public class HelloWorldController {
 	@RequestMapping(value = "/helloworld")
 	@ResponseBody
 	public String sayHello() {
-		return "Hello World";
+		Person person = new Person("John", "Doe");
+		person = personRepository.save(person);
+		return "Hello World " + personRepository.findAll();
 	}
 
 	/**

@@ -25,7 +25,10 @@ import org.springframework.context.annotation.Import;
  *
  */
 @SpringBootApplication
-@Import(value = { ViewConfiguration.class })
+@Import(value = { 
+	ViewConfiguration.class,
+	ModelConfiguration.class 
+})
 public class Application extends SpringBootServletInitializer {
 
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
