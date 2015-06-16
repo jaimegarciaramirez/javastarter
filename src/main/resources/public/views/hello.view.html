@@ -7,6 +7,7 @@
 <script src="/webjars/angularjs/1.4.0-rc.1/angular.min.js"></script>
 <script src="/webjars/angular-ui-router/0.2.14/release/angular-ui-router.min.js"></script>
 <script src="/modules/starter.js"></script>
+<script src="/modules/todo/todo.controller.js"></script>
 <link rel="stylesheet" type="text/css" href="/styles/pure-min.css" />
 <link rel="stylesheet" type="text/css" href="/styles/bridgephase.css" />
 </head>
@@ -34,11 +35,15 @@
 			The menu below shows AngularJS routing using the <a href="https://github.com/angular-ui/ui-router">AngularUI Router</a>.
 			Use the AngularUI Router for your routing needs, it offers more features than the default provided <code>ng-route</code>.
 		</p>
+		
+		<div data-ng-include="'/modules/todo/todo.view.html'"></div>
+		
 		<ul class="pure-menu-list">
 			<li class="pure-menu-item"><a data-ui-sref="home" class="pure-menu-link">Home</a></li>
 			<li class="pure-menu-item"><a data-ui-sref="about" class="pure-menu-link">About</a></li>
 		</ul>
 	</div>
+	
 	<div class="section" data-ui-view></div>
 </body>
 </html>
