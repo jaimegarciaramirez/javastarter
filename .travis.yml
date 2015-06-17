@@ -8,10 +8,8 @@ script:
  - ./gradlew build
 
 deploy:
-  provider: codedeploy
+  provider: s3
   access_key_id: $AWS_ACCESS_ID
   secret_access_key: $AWS_SECRET_KEY
   bucket: "jgr-deployments"
-  key: ./build/libs
-  application: JavaStarter
-  deployment_group: TestDeploys
+  skip_cleanup: true
