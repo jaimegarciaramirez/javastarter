@@ -35,6 +35,11 @@ jar {
   }
 }
 
+
+war {
+  archiveName = 'javastarter.war'
+}
+
 repositories {
   mavenCentral()
 }
