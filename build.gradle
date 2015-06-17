@@ -49,6 +49,8 @@ dependencies {
   compile 'org.springframework.data:spring-data-jpa'			// Spring data
   compile 'org.hibernate:hibernate-entitymanager'				// Hibernate
   compile("com.h2database:h2")									// In memory database
+  
+  providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat' // so we can turn it into a war
 
   testCompile group: 'junit', name: 'junit', version: '4.+'
 }

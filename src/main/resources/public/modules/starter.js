@@ -1,3 +1,4 @@
+/* global angular */
 /**
  * Starter Application
  * 
@@ -13,9 +14,9 @@ angular.module('starter', [ 'ui.router' ]).config(
 
 		$stateProvider.state('home', {
 			url: '/home',
-			templateUrl: '/modules/home/home.view.html'
+			templateUrl: '/javastarter/modules/home/home.view.html'
 		}).state('about', {
 			url: '/about',
-			templateUrl: '/modules/about/about.view.html'
+			templateUrl: '/javastarter/modules/about/about.view.html'
 		})
 	} ])
