@@ -1,5 +1,10 @@
 language: java
+
 before_install: 
- - chmod +x gradlew
+	- chmod +x gradlew
+
 script: 
- - ./gradlew build
+	- ./gradlew build
+
+after_success:
+    "curl --ftp-create-dirs -T uploadfilename -u $FTPUSER:$FTPPASSWORD ftp://waws-prod-blu-027.ftp.azurewebsites.windows.net/site/wwwroot/webapps/"
