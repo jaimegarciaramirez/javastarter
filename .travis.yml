@@ -7,5 +7,5 @@ script:
  - ./gradlew build
 
 after_success:
- - "curl --ftp-create-dirs -T ./build/libs/javastarter.war -u $FTPUSER:$FTPPASSWORD ftp://waws-prod-blu-027.ftp.azurewebsites.windows.net/site/wwwroot/webapps/javastarter.war" -Q "DELE javastarter.war"
+ - "curl --ftp-create-dirs -T ./build/libs/javastarter.war -u $FTPUSER:$FTPPASSWORD ftp://waws-prod-blu-027.ftp.azurewebsites.windows.net/site/wwwroot/webapps/javastarter.war -Q 'DELE javastarter.war'" 
  - "curl --ftp-create-dirs -T ./build/libs/javastarter.war -u $FTPUSER:$FTPPASSWORD ftp://waws-prod-blu-027.ftp.azurewebsites.windows.net/site/wwwroot/webapps/"
