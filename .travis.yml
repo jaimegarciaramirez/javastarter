@@ -8,7 +8,14 @@ script:
  - ./gradlew build
 
 deploy:
-  provider: codedeploy
+  - provider: s3
+  access_key_id: $AWS_ACCESS_ID
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: "jgr-deployments"
+  skip_cleanup: true
+  local_dir: build/distributions
+  upload_dir: javastarter/build-$TRAVIS_BUILD_NUMBER
+  - provider: codedeploy
   access_key_id: $AWS_ACCESS_ID
   secret_access_key: $AWS_SECRET_KEY
   bucket: "jgr-deployments"
