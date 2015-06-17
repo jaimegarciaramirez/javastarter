@@ -7,7 +7,11 @@ before_install:
 script: 
  - ./gradlew build
 
-after_success:
-  - "scp -i ~/Documents/Bridgephase/GSA_BPA/jaime-aws.pem ./build/libs/javastarter.war ubuntu@ec2-54-164-139-179.compute-1.amazonaws.com:/home/ubuntu"
-# - "curl -v -u $FTPUSER:$FTPPASSWORD ftp://waws-prod-blu-027.ftp.azurewebsites.windows.net/ -Q 'DELE site/wwwroot/webapps/javastarter.war'" 
-# - "curl --ftp-create-dirs -T ./build/libs/javastarter.war -u $FTPUSER:$FTPPASSWORD ftp://waws-prod-blu-027.ftp.azurewebsites.windows.net/site/wwwroot/webapps/"
+deploy:
+  provider: codedeploy
+  access_key_id: $AWS_ACCESS_ID
+  secret_access_key: $AWS_SECRET_KEY
+  bucket: "jgr-deployments"
+  key: ./build/libs
+  application: JavaStarter
+  deployment_group: TestDeploys
