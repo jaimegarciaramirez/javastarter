@@ -7,6 +7,7 @@ Feel free to modify the project to suit your needs.
 
 # What to update?
 
+
 In the `build.gradle` file you will find the project and deployable anmes, make sure you update those.
 
 * Update or remote the `HelloWorld.java` controller for this application. 
