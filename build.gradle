@@ -77,9 +77,15 @@ task copyAppSpec(type: Copy) {
   into 'build/libs'
 }
 
+task copyScripts(type: Copy) {
+  from 'awsscripts'
+  into 'build/libs'
+}
+
 task awsRevision(type: Zip) {
   from 'build/libs'  
 }
 
+awsRevision.dependsOn war
 awsRevision.dependsOn copyAppSpec
-awsRevision.mustRunAfter war
+awsRevision.dependsOn copyScripts

@@ -55,9 +55,9 @@ files:
 
 hooks:
  ApplicationStop:
-   - location: /home/ubuntu/deployments/cleanup-tomcat.sh
+   - location: cleanup-tomcat.sh
  ApplicationStart:
-   - location: /home/ubuntu/applications/apache-tomcat-7.0.62/bin/catalina.sh start
+   - location: start-tomcat.sh
 
 # For each deployment lifecycle event, specify multiple "location" entries 
 #   if you want to run multiple scripts during that event.
