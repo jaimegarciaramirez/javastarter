@@ -1,7 +1,6 @@
 language: java
 
 before_install: 
- - openssl aes-256-cbc -K $encrypted_432bca9ab536_key -iv $encrypted_432bca9ab536_iv -in jaime-aws.pem.enc -out jaime-aws.pem -d
  - chmod +x gradlew
 
 script: 
