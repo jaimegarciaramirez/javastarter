@@ -54,9 +54,9 @@ files:
 #   may cause associated deployments to fail.
 
 hooks:
- ApplicationStop
+ ApplicationStop:
    - location: /home/ubuntu/deployments/cleanup-tomcat.sh
- ApplicationStart
+ ApplicationStart:
    - location: /home/ubuntu/applications/apache-tomcat-7.0.62/bin/catalina.sh start
 
 # For each deployment lifecycle event, specify multiple "location" entries 
