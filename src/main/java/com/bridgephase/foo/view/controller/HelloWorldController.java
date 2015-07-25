@@ -2,7 +2,10 @@ package com.bridgephase.foo.view.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bridgephase.foo.model.jpa.Person;
@@ -25,14 +28,24 @@ public class HelloWorldController {
 	 * 
 	 * @return A rendered response body of "Hello World"
 	 */
-	@RequestMapping(value = "/helloworld")
+	@RequestMapping(value = "/person", method = RequestMethod.PUT)
 	@ResponseBody
-	public String sayHello() {
-		Person person = new Person("John", "Doe");
+	public Person person(@RequestBody Person newPerson) {
+		Person person = new Person(newPerson.getFirstName(), newPerson.getLastName());
 		person = personRepository.save(person);
-		return "Hello World " + personRepository.findAll();
+		return person;
 	}
 
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	@ResponseBody
+	public Iterable<Person> persons(@RequestParam(value="firstName", required=false) String firstName) {
+		if (firstName == null) {
+			return personRepository.findAll();
+		} else {
+			return personRepository.findByFirstName(firstName);
+		}
+	}
+	
 	/**
 	 * This request mapping method will render a view. The views are
 	 * stored under the <code>/src/main/resources/public</code> directory, the returned
@@ -40,8 +53,8 @@ public class HelloWorldController {
 	 * 
 	 * @return the view name of "hello"
 	 */
-	@RequestMapping(value = "/")
-	public String hello() {
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String mainview() {
 		return "hello";
 	}
 }

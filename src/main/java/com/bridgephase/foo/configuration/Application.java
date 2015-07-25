@@ -6,6 +6,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 import org.springframework.context.annotation.Import;
 
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
 /**
  * This is the main driver of the application. Using Spring Boot, this runs the application in an embedded Tomcat
  * server.
@@ -29,6 +31,7 @@ import org.springframework.context.annotation.Import;
 	ViewConfiguration.class,
 	ModelConfiguration.class 
 })
+@EnableSwagger2
 public class Application extends SpringBootServletInitializer {
 
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
